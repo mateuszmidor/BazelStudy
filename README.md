@@ -9,3 +9,9 @@ Install `bazelisk`, which is a helpful wrapper around bazel, and also installs b
 ```sh
 brew install bazelisk
 ```
+
+## Commands
+
+* bazel --version
+* bazel build //...
+* bazel build //projects/projectA/...
