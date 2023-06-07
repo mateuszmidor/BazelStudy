@@ -20,4 +20,5 @@ brew install bazelisk
 * bazel test //projects/...
 * bazel run //projects/my-python-app:main
 * bazel query @gorilla_mux//... - list all dependencies that can be used in eg. go_binary -> deps [...], eg. "@gorilla_mux//:mux"
-
+* `bazel run  projects/my-python-app:python_web_image -- --norun` - build docker image without running, see: `docker image ls`
+  * then: `docker run -p 5000:5000 bazel/projects/my-python-app:python_web_image`
