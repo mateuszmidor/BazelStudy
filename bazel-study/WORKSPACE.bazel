@@ -1,6 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-
 ### PYTHON
 http_archive(
     name = "rules_python",
@@ -10,18 +9,20 @@ http_archive(
 )
 
 load("@rules_python//python:repositories.bzl", "py_repositories")
+
 py_repositories()
 
 load("@rules_python//python:pip.bzl", "pip_parse")
+
 pip_parse(
-   name = "python_deps",
-   requirements="//third_party:requirements.txt",
+    name = "python_deps",
+    requirements = "//third_party:requirements.txt",
 )
 
 # define repos for your requirements listed in third_party:requirements.txt
 load("@python_deps//:requirements.bzl", "install_deps")
-install_deps()
 
+install_deps()
 
 ### GO
 http_archive(
@@ -42,7 +43,6 @@ http_archive(
     ],
 )
 
-
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
@@ -55,7 +55,8 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 go_repository(
     name = "gorilla_mux",
     importpath = "github.com/gorilla/mux",
-    tag = "v1.8.0",
+    sum = "h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=",
+    version = "v1.8.0",
 )
 
 go_rules_dependencies()
@@ -63,7 +64,6 @@ go_rules_dependencies()
 go_register_toolchains(version = "1.20.4")
 
 gazelle_dependencies(go_repository_default_config = "//:WORKSPACE.bazel")
-
 
 ### Docker
 http_archive(
@@ -76,12 +76,13 @@ load(
     "@io_bazel_rules_docker//repositories:repositories.bzl",
     container_repositories = "repositories",
 )
+
 container_repositories()
 
 load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
 
 container_deps()
-   
+
 load(
     "@io_bazel_rules_docker//python3:image.bzl",
     _py_image_repos = "repositories",

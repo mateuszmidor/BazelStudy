@@ -1,13 +1,12 @@
-package go_hello_world_test
+package go_hello_world
 
 import (
-	"go_hello_world"
 	"testing"
 )
 
 func TestHelloWorld(t *testing.T) {
 	expected := "Hello World"
-	actual := go_hello_world.HelloWorld()
+	actual := HelloWorld()
 	if expected != actual {
 		t.Errorf("expected != actual: %s != %s", expected, actual)
 	}

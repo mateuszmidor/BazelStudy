@@ -1,0 +1,21 @@
+load("@python_deps//:requirements.bzl", "requirement")  # "python_deps" matches definition in WORKSPACE.bazel
+load("@io_bazel_rules_docker//python3:image.bzl", py_image = "py3_image")
+
+py_binary(
+    name = "main",
+    srcs = ["main.py"],
+    deps = [
+        "//projects/calculator",
+        requirement("Flask"),
+    ],
+)
+
+py_image(
+    name = "python_web_image",
+    srcs = ["main.py"],
+    main = "main.py",
+    deps = [
+        "//projects/calculator",
+        requirement("Flask"),
+    ],
+)
