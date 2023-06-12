@@ -1,0 +1,6 @@
+load(':rule.bzl', 'hello_library')
+
+hello_library(
+    name = "hello_target",
+    deps = [],
+)
