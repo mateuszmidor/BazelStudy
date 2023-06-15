@@ -1,0 +1,16 @@
+load("//macros:macro.bzl", "file_generator")
+
+file_generator(
+    name = "file1",
+    arg = "some_arg_one",
+)
+
+file_generator(
+    name = "file2",
+    arg = "some_arg_two",
+)
+
+file_generator(
+    name = "file3",
+    arg = "some_arg_three",
+)
