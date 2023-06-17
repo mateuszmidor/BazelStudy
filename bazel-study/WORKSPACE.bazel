@@ -80,3 +80,10 @@ load(
 )
 
 _py_image_repos()
+
+### Aliases
+# alias is created in a virtual package "external" (no directory for this); you can use an alias like this: bazel run //external:go-web
+bind (
+    name = "go-web",
+    actual = "//projects/go_web:go_web",
+)
