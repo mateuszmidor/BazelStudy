@@ -23,5 +23,6 @@ brew install bazelisk
 * bazel query @gorilla_mux//... - list all dependencies that can be used in eg. go_binary -> deps [...], eg. "@gorilla_mux//:mux"
 * `bazel run  projects/my-python-app:python_web_image -- --norun` - build docker image without running, see: `docker image ls`
   * then: `docker run -p 5000:5000 bazel/projects/my-python-app:python_web_image`
-* `bazel run //:gazelle` - generate go targets ("go_libary", "go_test", "go_binary") in BUILD.bazel files
-* `bazel run //:gazelle -- update-repos -from_file=projects/go_web/go.mod` - generate go dependencies ("go_repository") in WORKSPACE.bazel
+* `bazel run //:gazelle` - generate go targets ("go_libary", "go_test", "go_binary") in BUILD.bazel files, BTW formats existing BUILD files
+* `bazel run //:gazelle-update-repos` - generate go dependencies ("go_repository") in deps.bzl. See [./BUILD.bazel](BUILD.bazel)
+* `bazel run //projects/go_web:go_web` - run go_web server

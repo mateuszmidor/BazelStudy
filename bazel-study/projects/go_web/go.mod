@@ -1,4 +1,4 @@
-module go_web
+module github.com/mateuszmidor/BazelStudy/bazel-study/projects/go_web
 
 go 1.20
 

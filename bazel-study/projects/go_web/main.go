@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"go_hello_world"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/mateuszmidor/BazelStudy/bazel-study/projects/go_hello_world"
 )
 
 func HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
