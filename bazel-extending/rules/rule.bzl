@@ -13,7 +13,7 @@ def _hello_library_impl(ctx):
     )
     # OR:
     # ctx.actions.write(output_file, "Hellow!")
-
+    print("RULE IS ruNNING")
     # output must be returned or the rule will be smartly pruned from the bazel action graph
     return [
         DefaultInfo(files = depset([output_file])),
@@ -23,6 +23,6 @@ def _hello_library_impl(ctx):
 hello_library = rule(
     implementation = _hello_library_impl,
     attrs = {
-        "deps": attr.label_list(),
+        "deps": attr.label_list(), # declare that this rule takes an attribute "deps" of type list; not used here
     },
 )
