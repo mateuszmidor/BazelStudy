@@ -1,7 +1,9 @@
+package(default_visibility = ["//visibility:private"])
+
 py_library(
     name = "calculator",
     srcs = ["calculator.py"],
-    visibility = ["//visibility:public"],
+    visibility = ["//projects/my-python-app:__subpackages__"], # this library is only visible to my-python-app package and it's subpackages (if any)
 )
 
 py_test(
