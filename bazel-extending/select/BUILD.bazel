@@ -1,0 +1,30 @@
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag") # helpful for adding custom command line flags
+load(':select.bzl', 'select_library')
+
+# define new custom command line flag. 
+# It will be available as bazel target: //select:budget, and so querable with bazel query //...
+# usage: rather cumbersome form: bazel build //... --//select:budget='$$$' BUT we can define handy alias in .bazelrc with --flag_alias, and then just write: --budget='$$$'
+string_flag(name = "budget", build_setting_default = "$$") 
+
+# define cheap to be budget of $
+config_setting(
+    name = "cheap",
+    flag_values = {":budget": "$"},
+)
+
+# define expensive to be budget of $$$
+config_setting(
+    name = "expensive",
+    flag_values = {":budget": "$$$"}
+)
+
+
+select_library(
+    name = "select_hotel",
+    hotel_category = select ({
+        ":cheap": "cheap hotel",
+        ":expensive":"expensive hotel",
+        "//conditions:default": "smart-saver hotel" # when none above matches
+    }),
+)
+
