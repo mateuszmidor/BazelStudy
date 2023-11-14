@@ -49,6 +49,7 @@ load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_depe
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 load("//:deps.bzl", "go_dependencies")
 
+# directive below is generated with: bazel run //:gazelle-update-repos
 # gazelle:repository_macro deps.bzl%go_dependencies
 go_dependencies()
 
@@ -85,7 +86,7 @@ _py_image_repos()
 
 ### Aliases
 # alias is created in a virtual package "external" (no directory for this); you can use an alias like this: bazel run //external:go-web
-bind (
+bind(
     name = "go-web",
-    actual = "//projects/go_web:go_web",
+    actual = "@//projects/go_web:go_web",
 )

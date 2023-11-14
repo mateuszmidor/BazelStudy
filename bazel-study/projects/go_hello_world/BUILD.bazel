@@ -1,10 +1,11 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+package(default_visibility = ["//visibility:private"])
 
 go_library(
     name = "go_hello_world",
     srcs = ["hello_world.go"],
     importpath = "github.com/mateuszmidor/BazelStudy/bazel-study/projects/go_hello_world",
-    visibility = ["//visibility:public"],
+    visibility = ["//projects/go_web:__pkg__"], # this library is only visible to go_web package
 )
 
 go_test(

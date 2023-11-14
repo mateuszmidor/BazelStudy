@@ -1,0 +1,1 @@
+build --flag_alias=budget=//select:budget # thanks to this, we dont need to specify full target flag: bazel build //select:select_hotel --//select:budget='$', just: --budget='$'

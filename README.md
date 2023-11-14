@@ -1,6 +1,17 @@
 # BazelStudy
 
-For studying Bazel build tool.  
+For studying Bazel build tool. 
+
+## Stages
+
+* load - eg. macros are evaluated here and they don't have access to command line params and can't use "select" with cmd line params
+* analysis - eg. rules are evaluated here and they have access to command line param, so they can "select" on them
+* exectuion
+
+
+## Useful commands
+
+* `bazel query @platforms//...` - list all supported platforms (OS and CPU)
 
 ## bazel-study
 
